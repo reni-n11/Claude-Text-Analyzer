@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         'Anthropic-Version': '2023-06-01' // задължителен header
     },
     body: JSON.stringify({
-        model: 'claude-3', // или друг Claude модел
+        model: 'claude-opus-4-6', 
         prompt: `\n\nHuman: Extract the following from the text below:
         - Topic
         - Keywords
