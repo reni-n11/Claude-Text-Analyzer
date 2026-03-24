@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': process.env.CLAUDE_API_KEY,
+        'X-API-Key': process.env.ANTHROPIC_API_KEY,
       },
       body: JSON.stringify({
         model: 'claude-3', // или друг Claude модел
