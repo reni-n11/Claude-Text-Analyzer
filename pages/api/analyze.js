@@ -19,9 +19,10 @@ export default async function handler(req, res) {
         - Summary
         - Emotional tone
 
-    Text:
-    ${text}
-    `,
+        Text:
+        ${text}
+
+        Assistant:`,
         max_tokens_to_sample: 500,
         temperature: 0,
     }),
