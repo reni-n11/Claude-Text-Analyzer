@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': process.env.CLAUDE_API_KEY,
+        'X-API-Key': process.env.ANTHROPIC_API_KEY,
         'Anthropic-Version': '2023-06-01' // задължителен header
     },
     body: JSON.stringify({
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         temperature: 0,
     }),
     });
-    
+
     const data = await response.json();
     res.status(200).json(data);
   } catch (err) {
