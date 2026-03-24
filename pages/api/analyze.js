@@ -4,29 +4,33 @@ export default async function handler(req, res) {
   const { text } = req.body;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/complete', {
+    const response = await fetch('https://api.anthropic.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': process.env.ANTHROPIC_API_KEY, // увери се, че името съвпада с това в Vercel Environment Variables
+        'X-API-Key': process.env.CLAUDE_API_KEY, // съвпада с Environment Variable във Vercel
         'Anthropic-Version': '2023-06-01' // задължителен header
       },
       body: JSON.stringify({
-        model: 'claude-opus-4.5', // използвай модел, който твоят API key поддържа
-        prompt: `\n\nHuman: Extract the following from the text below and return the answer in JSON with keys "topic", "keywords", "summary", "emotion":
-
-Text:
-${text}
-
-Assistant:`,
-        max_tokens_to_sample: 500,
+        model: 'claude-3', // валиден модел за Messages API
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful assistant that extracts topic, keywords, summary, and emotional tone from text. Return JSON with keys: topic, keywords, summary, emotion.'
+          },
+          {
+            role: 'user',
+            content: text
+          }
+        ],
         temperature: 0,
+        max_tokens_to_sample: 500
       }),
     });
 
     const data = await response.json();
 
-    // Връщаме директно JSON-а от Claude
+    // Връщаме JSON от Claude
     res.status(200).json(data);
   } catch (err) {
     console.error(err);
