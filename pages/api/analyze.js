@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         'Anthropic-Version': '2023-06-01' // задължителен header
       },
       body: JSON.stringify({
-        model: 'claude-2', // използвай модел, който твоят API key поддържа
+        model: 'claude-opus-4-5', // използвай модел, който твоят API key поддържа
         prompt: `\n\nHuman: Extract the following from the text below and return the answer in JSON with keys "topic", "keywords", "summary", "emotion":
 
 Text:
