@@ -13,11 +13,11 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify({
         model: 'claude-3', // или друг Claude модел
-        prompt: `Extract the following from the text below:
-    - Topic
-    - Keywords
-    - Summary
-    - Emotional tone
+        prompt: `\n\nHuman: Extract the following from the text below:
+        - Topic
+        - Keywords
+        - Summary
+        - Emotional tone
 
     Text:
     ${text}
