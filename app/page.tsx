@@ -55,7 +55,7 @@ export default function Home() {
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
         const content = await page.getTextContent();
-        fullText += content.items.map((item: { str?: string }) => item.str || '').join(' ') + '\n';
+      fullText += content.items.map((item) => ('str' in item ? item.str : '')).join(' ') + '\n';
       }
       setText(fullText);
     } else if (ext === 'docx') {
